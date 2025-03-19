@@ -3,22 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Stmt\TryCatch;
 
 class LoginController extends Controller
 {
     public function Login(Request $request)
     {
-        $request->validate([
-            'email' => 'email|required|unique:users,email',
-            'password' => 'required|min:8'
+        $credentials = $request->validate([
+            'email' => 'email|required',
+            'password' => 'required'
         ]);
 
-        try
-        {
-            $
-        } catch (\Throwable $th) {
-            //throw $th;
+        if(Auth::attempt($credentials)){
+            return view('home');
         }
+
+        return back()->withErrors(['email' => 'Invalid login details']);
+    }
+
+    public function Logout()
+    {
+        auth::logout();
+        return view('login.create');
     }
 }
