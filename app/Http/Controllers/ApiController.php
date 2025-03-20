@@ -32,6 +32,9 @@ class ApiController extends Controller
 
         if(!empty($product)){
 
+            if(file_exists($product->image_path)){
+                unlink($product->image_path);
+            }
             $product->delete();
 
             return response()->json([

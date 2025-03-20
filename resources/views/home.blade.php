@@ -28,7 +28,7 @@
                     </div>
                   </div>
                   <form class="d-flex">
-                    <a class="btn btn-outline-danger" href="{{route('logout')}}">Logout</a>
+                    <a class="btn btn-danger" href="{{route('logout')}}">Logout</a>
                   </form>
                 </div>
             </nav>
