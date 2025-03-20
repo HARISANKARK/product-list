@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +19,9 @@ Route::get('/', function () {
     return view('login.create');
 });
 
+Route::get('/product/destroy/{id}',[ProductController::class,'destroy'])->name('product.destroy');
+Route::resource('/product',ProductController::class)->except('destroy');
+
 Route::post('/login',[LoginController::class,'Login'])->name('login');
 Route::get('/logout',[LoginController::class,'Logout'])->name('logout');
+

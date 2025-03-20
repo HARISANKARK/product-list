@@ -19,7 +19,7 @@ class LoginController extends Controller
             return view('home');
         }
 
-        return back()->withErrors(['email' => 'Invalid login details']);
+        return redirect()->back()->with('danger','Invalid Login Credentials!');
     }
 
     public function Logout()
