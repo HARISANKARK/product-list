@@ -8,6 +8,10 @@ use PhpParser\Node\Stmt\TryCatch;
 
 class LoginController extends Controller
 {
+    public function LoginCreate()
+    {
+        return view('login.create');
+    }
     public function Login(Request $request)
     {
         $credentials = $request->validate([
