@@ -25,7 +25,8 @@
                     <img src="{{ asset($product->image_path) }}" alt="Product Image" style="width: 100px; height: 50px;">
                 </td>
                 <td>
-                    <a href="{{route('product.destroy',$product->id)}}" onclick="return confirm('Delete This Product?');"><i class="fas fa-trash"></i></a>
+                    <a href="{{route('product.edit',$product->id)}}" class="btn btn-primary" ><i class="fas fa-pencil"></i></a>
+                    <a href="{{route('product.destroy',$product->id)}}" class="btn btn-danger" onclick="return confirm('Delete This Product?');"><i class="fas fa-trash"></i></a>
                 </td>
             </tr>
         @endforeach

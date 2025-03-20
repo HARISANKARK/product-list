@@ -72,7 +72,9 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::find($id);
+
+        return view('product.edit',compact('product'));
     }
 
     /**
@@ -80,7 +82,38 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+        ]);
+
+        try
+        {
+            $imageName =NULL;
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('products'), $imageName);
+            }
+
+            $product = Product::find($id);
+            $product->name = $request->name;
+            $product->description = $request->description;
+            $product->price = $request->price;
+            if($request->hasFile('image')){
+                if(file_exists($product->image_path)){
+                    unlink($product->image_path);
+                }
+                $product->image_path = 'products/'.$imageName;
+            }
+            $product->save();
+
+            return redirect()->route('product.index')->with('success','Product Updated Successfully');
+
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('danger','Some Thing Wrong!');
+        }
     }
 
     /**

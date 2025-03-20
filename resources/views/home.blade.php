@@ -15,16 +15,16 @@
 <body>
     <div class="container">
         <div class="row">
-            <nav class="navbar navbar-expand-lg navbar-light bg-info mt-5">
+            <nav class="navbar navbar-expand-lg navbar-light bg-warning mt-5">
                 <div class="container-fluid">
-                  <a class="navbar-brand" href="#">Home</a>
+                  <a class="navbar-brand" href="#">{{config('app.name')}}</a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                      <a class="nav-link" aria-current="page" href="{{route('product.create')}}">Add Product</a>
-                      <a class="nav-link" aria-current="page" href="{{route('product.index')}}">View Products</a>
+                      <a class="nav-link btn btn-success text-white m-2" aria-current="page" href="{{route('product.create')}}">Add Product</a>
+                      <a class="nav-link btn btn-primary text-white m-2" aria-current="page" href="{{route('product.index')}}">View Products</a>
                     </div>
                   </div>
                   <form class="d-flex">
